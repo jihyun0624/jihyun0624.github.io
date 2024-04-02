@@ -7,7 +7,7 @@
         } */
 
 
-        nav {
+        /* nav {
             float: right;
         }
 
@@ -16,28 +16,75 @@
             float: left;
         }
 
-        #반복문 {
-            background-color: rgb(0, 255, 115);
-        }
+        #Python, #Java, #C {
+            background-color: rgb(255, 255, 255);
+            border: 1px;
+            border-style: dotted;
+        } */
 
-        #for, #while {
-            background-color: rgb(6, 223, 103);
-            height: 150px;
-        }
-
-        #조건문 {
-            background-color: aqua;
-        }
-
-        #if, #elif, #else {
-            background-color: rgb(3, 224, 224);
-            height: 150px;
-        }
-        
-        footer {
+        /* footer {
             clear: none;
-        }
+        } */
 
         header {
             text-align: center;
+            border-color: #40ff79;
+            border: 1px;
+            border-style: dotted;
+            background-color: #7eff93;
         }
+
+
+        #python {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #Java {
+            position: absolute;
+            top: 50%;
+            left: 65%;
+            transform: translate(-50%, -50%);
+        }
+
+        #C {
+            position: absolute;
+            top: 50%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+        }
+
+        .tg-python  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
+        .tg-python td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444;
+          font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 6px;word-break:normal;}
+        .tg-python th{background-color:#409cff;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#fff;
+          font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 6px;word-break:normal;}
+        .tg-python .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+        .tg-python .tg-j0tj{background-color:#D2E4FC;text-align:center;vertical-align:top}
+        .tg-python .tg-svo0{background-color:#D2E4FC;border-color:inherit;text-align:center;vertical-align:top}
+
+        table,tr,td {border:1px solid #409cff; border-collapse:collapse;}
+        td {width: 307px;}
+        a {display:block; line-height:40px; text-align:center; text-decoration:none;}
+        a:hover {color: black; background:#9ABAD9;}
+
+        .tg-java  {border-collapse:collapse;border-color:#C44D58;border-spacing:0;}
+        .tg-java td{background-color:#F9CDAD;border-color:#C44D58;border-style:solid;border-width:1px;color:#002b36;
+          font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg-java th{background-color:#FE4365;border-color:#C44D58;border-style:solid;border-width:1px;color:#fdf6e3;
+          font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg-java .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+        .tg-java .tg-j0tj{background-color:#FFA4A0;border-color:inherit;text-align:center;vertical-align:top}
+        .tg-java .tg-svo0{background-color:#FFA4A0;border-color:inherit;text-align:center;vertical-align:top}
+
+        .tg-C  {border-collapse:collapse;border-color:#ee6cff;border-spacing:0;}
+        .tg-C td{background-color:#f8d5ff;border-color:#ee6cff;border-style:solid;border-width:1px;color:#002b36;
+          font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg-C th{background-color:#e945ff;border-color:#ee6cff;border-style:solid;border-width:1px;color:#fdf6e3;
+          font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg-C .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+        .tg-C .tg-j0tj{background-color:#f8a8ff;border-color:inherit;text-align:center;vertical-align:top}
+        .tg-C .tg-svo0{background-color:#f8a8ff;border-color:inherit;text-align:center;vertical-align:top}
+        
