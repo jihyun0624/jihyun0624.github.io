@@ -1,0 +1,74 @@
+<script>
+    let s = "one,two,three,four,five";
+    array = s.split(',');
+    for (i = 0; i < array.length;i++){
+        document.write(i + '-' + array[i] + '<br>');
+    }
+</script>
+
+<!DOCTYPE html>
+<body>
+    <p id="test">다음에 학습할 내용은 HTML입니다.
+    <button onclick="myFun()">HTML 학습을 끝냈으면 누르세요.</button>
+    <script>
+        function myFun(){
+            let text = document.getElementById("test").innerHTML;
+            document.getElementById("test").innerHTML=
+                text.replace("HTML", "JAVASCRIPT");
+        }
+    </script>
+    </p>
+</body>
+</html>
+
+<!-- <script>
+    let f = Math.random()*100; //f = 0.0 ~ 100.0
+    let n = Math.floor(f);     //n = 0 ~ 99
+    for (i=0; i < 6; i++){
+        let f = Math.random()*45; 
+        let n = Math.floor(f);     
+        document.write(n, "<br>");
+    }
+</script> -->
+
+<p id="lotto">
+    <button onclick="Lotto()">로또번호 출력하기.</button>
+    <script>
+        var numlist = [];
+        function Lotto(){
+            for (i=0; i < 6; i++){
+                let f = (Math.random()*45)+1; 
+                let n = Math.floor(f);
+                numlist += n + ' '
+                }
+        alert(numlist);
+        numlist = []
+        }
+    </script>
+    </p>
+
+
+    <script>
+        function printArray(a) {
+            document.write("[ ");
+            for (let i = 0; i < a.length; i++)
+                document.write(a[i] + " ");
+            document.write(" ] <br>");
+        }
+        
+        let fruit1 = new Array("apple", "banana", "orange");
+        let name = ["kim", "lee", "park", "choi"];
+        let country = ["korea", "Japan", "China"]
+        printArray(fruit1);
+        printArray(name);
+        printArray(country);
+    </script>
+
+    <!-- <script>
+        let sum=0;
+        for (let i = 0; i < a.length; i++){
+            document.write(a[i] + " ");
+            sum+=a[i]; //sum = sum + a[i]
+        }
+        document.write(" ] <br>", sum);
+    </script> -->
