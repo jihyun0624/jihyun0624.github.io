@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미니게임</title>
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<div class="container"> 
+  <div class="logo">
+    <img src="image/minigame.png" alt="미니게임 로고">
+  </div>
+
+  <div class="category">
+    <div class="category-item" onclick="showDiceGame()">주사위 홀짝</div>
+    <div class="category-item" onclick="showRPSGame()">가위바위보</div>
+  </div>
+
+  <div class="coin-container">
+    <img src="image/coin.png" alt="coin-logo">나의 포인트 : <span id="money">1000</span>P
+  </div>
+
+  <div class="game-container" id="dice-game" style="display: none;">
+    <div class="dice-container">
+      <div class="dice" id="dice">?</div>
+    </div>
+    <div class="betting-options">
+      <label for="choice">홀/짝 선택:</label>
+      <select id="choice">
+        <option value="홀">홀</option>
+        <option value="짝">짝</option>
+      </select>
+      <label for="betting-amount">배팅 금액:</label>
+      <input type="number" id="betting-amount" min="1" value="100">
+    </div>
+    <button onclick="rollDice()">주사위 돌리기</button>
+  </div>
+
+  <div class="game-container" id="rps-game" style="display: none;">
+    <div class="rps-container">
+      <div class="rps-box">
+        <div id="pc-choice"></div>
+        <div>PC</div>
+      </div>
+      <div class="rps-box">
+        <div id="user-choice"></div>
+        <div>나</div>
+      </div>
+    </div>
+    <div class="betting-options">
+      <label for="rps-choice">가위/바위/보 선택:</label>
+      <select id="rps-choice">
+        <option value="s">가위</option>
+        <option value="r">바위</option>
+        <option value="p">보</option>
+      </select>
+      <label for="rps-betting-amount">배팅 금액:</label>
+      <input type="number" id="rps-betting-amount" min="1" value="100">
+    </div>
+    <button onclick="playRPS()">가위바위보!</button>
+  </div>
+</div>
+
+<script>
+let money = 3000; // 시작 돈
+document.getElementById('money').innerText = money;
+
+function showDiceGame() {
+  hideAllGames();
+  document.getElementById('dice-game').style.display = 'block';
+}
+
+function showRPSGame() {
+  hideAllGames();
+  document.getElementById('rps-game').style.display = 'block';
+}
+
+function hideAllGames() {
+  const games = document.querySelectorAll('.game-container');
+  games.forEach(game => game.style.display = 'none');
+}
+
+function rollDice() { // 주사위 굴리기
+  const choice = document.getElementById('choice').value;
+  const bettingAmount = parseInt(document.getElementById('betting-amount').value);
+  
+  if (bettingAmount > money) {
+    alert('배팅 금액이 현재 잔액보다 많습니다.');
+    return;
+  }
+
+  const diceElement = document.getElementById('dice');
+  let diceSize = 6; // 주사위로 나울수 있는 최대 수
+  let counter = 0;
+  let result = 0;
+  const interval = setInterval(() => {
+    result = Math.floor(Math.random() * diceSize) + 1;
+    diceElement.innerText = result;
+    counter++;
+    if (counter > 20) {
+      clearInterval(interval);
+      checkDiceResult(result, choice, bettingAmount);
+    }
+  }, 100 - counter * 2); // 주사위가 돌아가는 시간
+}
+
+function checkDiceResult(result, choice, bettingAmount) {
+  const diceResult = result % 2 === 0 ? '짝' : '홀';
+  if (choice === diceResult) {
+    const winnings = bettingAmount * 2; // 승리시 얻는 포인트
+    money += winnings;
+    alert(`승리! ${winnings}P을 받았습니다.`);
+  } else {
+    money -= bettingAmount;
+    alert(`패배! ${bettingAmount}P을 잃었습니다.`);
+  }
+  document.getElementById('money').innerText = money;
+}
+
+function playRPS() { // 가위바위보 게임
+  const choice = document.getElementById('rps-choice').value;
+  const bettingAmount = parseInt(document.getElementById('rps-betting-amount').value);
+
+  if (bettingAmount > money) {
+    alert('배팅 금액이 현재 잔액보다 많습니다.');
+    return;
+  }
+
+  const choices = ['s', 'r', 'p'];
+  const pcChoice = choices[Math.floor(Math.random() * choices.length)];
+  document.getElementById('pc-choice').innerHTML = `<img src="image/${pcChoice}.png" alt="${pcChoice}">`; // PC가 선택한 RSP
+  document.getElementById('user-choice').innerHTML = `<img src="image/${choice}.png" alt="${choice}">`; // 내가 선택한 RSP
+
+  const result = getRPSResult(choice, pcChoice);
+  if (result === 'win') {
+    const winnings = bettingAmount * 2; // 승리시 얻는 포인트
+    money += winnings;
+    alert(`승리! ${winnings}P을 받았습니다.`);
+  } else if (result === 'lose') {
+    money -= bettingAmount;
+    alert(`패배! ${bettingAmount}P을 잃었습니다.`);
+  } else {
+    alert(`무승부! 금액 변동이 없습니다.`); // 무승부
+  }
+  document.getElementById('money').innerText = money;
+}
+
+function getRPSResult(userChoice, pcChoice) {
+  if (userChoice === pcChoice) return 'draw';
+  if ((userChoice === 's' && pcChoice === 'p') ||
+      (userChoice === 'r' && pcChoice === 's') ||
+      (userChoice === 'p' && pcChoice === 'r')) {
+    return 'win';
+  }
+  return 'lose';
+}
+</script>
+
+</body>
+</html>
